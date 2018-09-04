@@ -1,13 +1,19 @@
 <?php
+
 global $text_domain_name,$assets_dir;
 $text_domain_name = 'digistry';
 $assets_dir = '/assets/';
 $npm_dir = '/node_modules/';
 
 
+/**
+ * Setup.
+ */
+
 if ( ! function_exists( $text_domain_name . '_setup' ) ) :
 
 function digistry_setup() {
+
 	global $text_domain_name;
 	// Set  Text Domain
 	load_theme_textdomain( $text_domain_name );
@@ -73,28 +79,42 @@ function digistry_setup() {
 endif; // theme_setup
 add_action( 'after_setup_theme', $text_domain_name . '_setup' );
 
-/*
+/**
  * Enqueues scripts and styles.
  */
 
+if(!function_exists($text_domain_name . '_scripts')):
+
 function digistry_scripts() {
+
 	global $npm_dir;
 	// Theme stylesheet.
-	wp_enqueue_style( $text_domain_name . '-sanitize', get_stylesheet_directory_uri() . $npm_dir . 'sanitize.css/sanitize.css');
-	wp_enqueue_style( $text_domain_name . '-bootstrap', get_stylesheet_directory_uri() . $npm_dir . 'bootstrap/dist/css/bootstrap.min.css');
-	wp_enqueue_style( $text_domain_name . '-slicknav', get_stylesheet_directory_uri() . $npm_dir . 'slicknav/dist/slicknav.css');
-	wp_enqueue_style( $text_domain_name . '-slick', get_stylesheet_directory_uri() . $npm_dir . 'slick-carousel/slick/slick.css');
-	wp_enqueue_style( $text_domain_name . '-slick-theme', get_stylesheet_directory_uri() . $npm_dir . 'slick-carousel/slick/slick-theme.css');
-	wp_enqueue_style( $text_domain_name . '-style', get_stylesheet_uri());
+	wp_enqueue_style( 'digisty-sanitize', get_template_directory_uri() . $npm_dir . 'sanitize.css/sanitize.css');
+	wp_enqueue_style( 'digisty-bootstrap', get_template_directory_uri() . $npm_dir . 'bootstrap/dist/css/bootstrap.min.css');
+	//wp_enqueue_style( $text_domain_name . '-slicknav', get_stylesheet_directory_uri() . $npm_dir . 'slicknav/dist/slicknav.css');
+	//wp_enqueue_style( 'parent-mmenu', get_template_directory_uri() . $npm_dir . 'jquery.mmenu/dist/jquery.mmenu.css');
+	//wp_enqueue_style( 'parent-mmenu', get_template_directory_uri() . $npm_dir . 'jquery.mmenu/dist/jquery.mmenu.all.css');
+	//wp_enqueue_style( 'parent-slidebars', get_template_directory_uri() . $npm_dir . 'Slidebars/dist/slidebars.min.css');
+	//wp_enqueue_style( 'parent-drawer', get_template_directory_uri() . $npm_dir . 'jquery-drawer/dist/css/drawer.min.css');
+	wp_enqueue_style( 'digisty-hiraku', get_template_directory_uri() . $npm_dir . 'hiraku/css/hiraku.min.css');
+	wp_enqueue_style( 'digisty-slick', get_template_directory_uri() . $npm_dir . 'slick-carousel/slick/slick.css');
+	wp_enqueue_style( 'digisty-slick-theme', get_template_directory_uri() . $npm_dir . 'slick-carousel/slick/slick-theme.css');
+	wp_enqueue_style( 'digisty-style', get_template_directory_uri() . '/style.css');
 
 
-	wp_enqueue_script( $text_domain_name . 'jquery-easing', get_stylesheet_directory_uri() . $npm_dir . 'jquery-easing/dist/jquery.easing.1.3.umd.min.js');
-	wp_enqueue_script( $text_domain_name . 'bootstrap', get_stylesheet_directory_uri() . $npm_dir . 'bootstrap/dist/js/bootstrap.min.js');
-	wp_enqueue_script( $text_domain_name . 'slicknav', get_stylesheet_directory_uri() . $npm_dir . 'slicknav/dist/jquery.slicknav.min.js');
-	wp_enqueue_script( $text_domain_name . '-master', get_stylesheet_directory_uri() . '/master.js');
+	wp_enqueue_script( 'digisty-jquery-easing', get_template_directory_uri() . $npm_dir . 'jquery-easing/dist/jquery.easing.1.3.umd.min.js');
+	wp_enqueue_script( 'digisty-bootstrap', get_template_directory_uri() . $npm_dir . 'bootstrap/dist/js/bootstrap.min.js');
+	wp_enqueue_script( 'digisty-slick', get_template_directory_uri() . $npm_dir . 'slick-carousel/slick/slick.min.js');
+	//wp_enqueue_script( 'parent-mmenu', get_template_directory_uri() . $npm_dir . 'jquery.mmenu/dist/jquery.mmenu.all.js');
+	//wp_enqueue_script( 'parent-slidebars', get_template_directory_uri() . $npm_dir . 'Slidebars/dist/slidebars.js');
+	//wp_enqueue_script( 'parent-iscroll', get_template_directory_uri() . $npm_dir . 'iscroll/build/iscroll.js');
+	//wp_enqueue_script( 'parent-slidebars', get_template_directory_uri() . $npm_dir . 'jquery-drawer/dist/js/drawer.min.js');
+	wp_enqueue_script( 'digisty-hiraku', get_template_directory_uri() . $npm_dir . 'hiraku/js/jquery-hiraku.min.js');
+	wp_enqueue_script( 'digisty-jquery-lazyload', get_template_directory_uri() . $npm_dir . 'jquery-lazyload/jquery.lazyload.js');
+	wp_enqueue_script( 'digisty-master', get_template_directory_uri() . '/master.js');
 
 }
-
+endif;
 add_action( 'wp_enqueue_scripts', $text_domain_name . '_scripts' );
 
 
@@ -102,15 +122,18 @@ add_action( 'wp_enqueue_scripts', $text_domain_name . '_scripts' );
 /**
  * 管理画面のロゴ変更
  */
+
+if(!function_exists($text_domain_name . '_login_logo_image')):
 function digistry_login_logo_image() {
     echo '<style type="text/css">
             #login h1 a {
-                background: url(' . get_stylesheet_directory_uri() . '/assets/img/admin/login_logo.svg) no-repeat !important;
+                background: url(' . get_stylesheet_directory_uri() . '/assets/img/admin/login_logo.svg) no-repeat center center !important;
 				width: 128px;
 				height: 128px;
             }
     </style>';
 }
+endif;
 add_action('login_head', $text_domain_name . '_login_logo_image');
 
 /**
@@ -143,11 +166,12 @@ add_filter( 'excerpt_length', 'text_domain_custom_excerpt_length', 999 );
 
 
 
-remove_filter( 'the_content', 'wpautop' );
-remove_filter( 'the_excerpt', 'wpautop' );
+
+//remove_filter('the_content', 'wpautop');　// 記事の自動整形を無効にする
+//remove_filter('the_excerpt', 'wpautop');　// 抜粋の自動整形を無効にする
 
 /**
- * カスタムフィールドの値を取得
+ * Types カスタムフィールドの値を取得
  */
 
 function digistry_get_field_params($prefix, $arg){

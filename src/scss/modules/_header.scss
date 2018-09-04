@@ -1,6 +1,5 @@
 
 header {
-  width: 200px;
   .logo {
     margin: 40px 0 0 40px;
     a {
@@ -13,10 +12,9 @@ header {
     }
   }
   nav {
-    margin: 40px 0 0 40px;
+
     ul {
       li {
-        width: 80px;
         &.active{
           img{
 

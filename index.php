@@ -11,17 +11,17 @@
 
 <article>
 	<main class="<?php echo $main_class;?>">
-		<?php if ( have_posts() ) : ?>
 			<?php if(is_home()):?>
-				<?php get_template_part( 'content','home');?>
+				<?php get_template_part( 'template-parts/content','home');?>
 			<?php else:?>
-				<?php while ( have_posts() ) : the_post();
-					get_template_part( 'content', get_post_format() );
-				endwhile; ?>
+				<?php if ( have_posts() ) : ?>
+                    <?php while ( have_posts() ) : the_post();
+                        get_template_part( 'template-parts/content', get_post_format() );
+                    endwhile; ?>
+				<?php else : ?>
+					<?php get_template_part( 'template-parts/content', 'none' ); ?>
+				<?php endif; ?>
 			<?php endif; ?>
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
 	</main>
 </article>
 <?php get_footer(); ?>

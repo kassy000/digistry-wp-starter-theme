@@ -6,6 +6,7 @@ var bp = {
     tab: 767,
     sp: 560
 };
+
 jQuery(function ($) {
     var contentWidth = 960;
 
@@ -15,45 +16,18 @@ jQuery(function ($) {
             resize();
         })
         resize();
-        $('header').show();
 
-        //slicknav
-        $('nav').slicknav({
-            label: "",
-            beforeOpen: function () {
-                $('.slicknav_bg').stop().fadeIn()
-            },
-            beforeClose: function () {
-                $('.slicknav_bg').stop().fadeOut()
-            }
+        //hiraku
+        $(".offcanvas-nav").hiraku({
+            btn:'.js-offcanvas-btn',
+            //fixedHeader:"#header",
+            direction:"right"
         });
-
-        $('.slicknav_menu').after('<div class="slicknav_bg"></div>');
-
-        flexibility(document.documentElement);
-
-
     })
 
 
     function resize() {
 
-        /*
-        var headerMargin = 0;
-        var minHeaderMargin = 10;
-        var headerMarginRight = 48;
-        var headerWidth = $('header').width();
-        if ($(window).width() > bp['pc']){
-            headerMargin = ($(window).width() - contentWidth) / 2 - headerWidth - headerMarginRight;
-        }else{
-            headerMargin = minHeaderMargin;
-        }
-        $('header').css({
-            marginLeft: headerMargin + 'px'
-        })
-        */
     }
 
-
 })
-
