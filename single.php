@@ -1,14 +1,8 @@
 <?php get_header(); ?>
-<?php
-	$post_type = get_post_type();
-	$format = $single_format[$post_type];
-?>
-<article>
-	<!-- Main -->
-	<main class="single<?php if($post_type) echo ' ' . $post_type;?>">
+<div id="main-content">
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'template-parts/single', $format ); ?>
+			<?php get_template_part( 'template-parts/content-single', get_post_type() ); ?>
 		<?php endwhile;?>
-	</main>
-</article>
+</div>
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

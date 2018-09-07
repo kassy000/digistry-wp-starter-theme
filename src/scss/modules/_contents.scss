@@ -1,5 +1,26 @@
 //Contents
-main {
-	
-}
 
+body{
+  &.archive.has-sidebar{
+    main{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media #{$bp-pc} {
+        flex-direction: row;
+
+      }
+      #main-content{
+        @media #{$bp-pc} {
+          width: 70%;
+        }
+      }
+      #sidebar{
+        @media #{$bp-pc} {
+          width: 25%;
+        }
+      }
+    }
+
+  }
+}

@@ -170,6 +170,72 @@ add_filter( 'excerpt_length', 'text_domain_custom_excerpt_length', 999 );
 //remove_filter('the_content', 'wpautop');　// 記事の自動整形を無効にする
 //remove_filter('the_excerpt', 'wpautop');　// 抜粋の自動整形を無効にする
 
+
+/**
+ * サイドバーウィジェット
+ */
+
+/*
+if (function_exists('register_sidebar')) {
+	register_sidebar(array(
+		'name' => 'サイドバー',
+		'id' => 'sidebar',
+		'description' => 'サイドバーウィジェット',
+		'before_widget' => '<div>',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>'
+	));
+}
+*/
+//add_theme_support( 'customize-selective-refresh-widgets' );
+
+/**
+ * Registers a widget area.
+ *
+ * @link https://developer.wordpress.org/reference/functions/register_sidebar/
+ *
+ */
+function digistry_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Sidebar', 'digistry' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'digistry' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Content Bottom 1', 'digistry' ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'digistry' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Content Bottom 2', 'digistry' ),
+		'id'            => 'sidebar-3',
+		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'digistry' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'digistry_widgets_init' );
+
+
+add_filter('body_class','my_body_class');
+function my_body_class($classes){
+	$classes[] = 'has-sidebar';
+	return $classes;
+}
+
 /**
  * Types カスタムフィールドの値を取得
  */

@@ -1,41 +1,4 @@
 
 header {
-  .logo {
-    margin: 40px 0 0 40px;
-    a {
-      width: 108px;
 
-      display: block;
-      img {
-        width: 100%;
-      }
-    }
-  }
-  nav {
-
-    ul {
-      li {
-        &.active{
-          img{
-
-            filter: saturate(1.0) brightness(1.0);
-          }
-        }
-        &.deactive{
-          opacity: 0.5;
-        }
-        a{
-          display: block;
-          height: 100%;
-        }
-        img {
-          width: 100%;
-          filter: saturate(1.0) brightness(0.0);
-        }
-
-
-
-      }
-    }
-  }
 }
