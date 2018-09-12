@@ -20,8 +20,10 @@ a{
 }
 
 a:hover{
+  img{
     opacity: $hover-opacity;
     filter: alpha(opacity=$hover-filter-opacity);
+  }
 }
 
 

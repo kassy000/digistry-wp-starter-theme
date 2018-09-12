@@ -1,33 +1,13 @@
-// JavaScript Document
-
-var bp = {
-    pc:1220,
-    site:959,
-    tab: 767,
-    sp: 560
-};
-
-jQuery(function ($) {
-    var contentWidth = 960;
-
-    $(function () {
-        //resize
-        $(window).resize(function () {
-            resize();
-        })
-        resize();
-
-        //hiraku
-        $(".offcanvas-nav").hiraku({
-            btn:'.js-offcanvas-btn',
-            //fixedHeader:"#header",
-            direction:"right"
-        });
-    })
+"use strict";
+var npmDir = '../../node_modules/';
+//window.jQuery = require('jquery');
+//window.$ = require('jquery');
+//window.easing = require('../../node_modules/jquery-easing/dist/jquery.easing.1.3.umd.min.js');
+//window.popper = require('../../node_modules/bootstrap/dist/js/bootstrap.min.js');
+//window.bootstrap = require('../../node_modules/bootstrap/dist/js/bootstrap.min.js');
 
 
-    function resize() {
-
-    }
-
-})
+import { Variables } from './modules/variables.js';
+window.variables = new Variables();
+import { Init } from './modules/init.js';
+var init = new Init(window.variables);

@@ -52,9 +52,9 @@ a {
   transition: opacity 0.3s, filter 0.3s, -webkit-filter 0.3s;
 }
 
-a:hover {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
+a:hover img {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 
 h1, h2, h3, h4, h5 {
@@ -231,68 +231,6 @@ main {
 Single
 ------------------------------------------
 */
-main.single .post-type, main.page .post-type {
-  margin: 32px auto 22px;
-}
-
-main.single .date, main.page .date {
-  font-size: 12px;
-}
-
-@media screen and (min-width: 67em) {
-  main.single h2 br, main.page h2 br {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 30em) {
-  main.single h2, main.page h2 {
-    margin-top: 48px;
-    margin-right: 0px;
-  }
-}
-
-main.single.shop-list .post-thumbnail, main.page.shop-list .post-thumbnail {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-main.single .mv_b .group .content, main.page .mv_b .group .content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-align-content: flex-end;
-  -ms-flex-line-pack: end;
-  align-content: flex-end;
-}
-
-main.single .mv_b .group .content .belong, main.page .mv_b .group .content .belong {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-main.single .mv_b .group .content .title, main.page .mv_b .group .content .title {
-  margin: 10px 0 10px;
-  font-size: 32px;
-}
-
-main.single .mv_b .group .content .en, main.page .mv_b .group .content .en {
-  margin: 10px 0 10px;
-  font-size: 18px;
-}
-
 /*
 Page
 ------------------------------------------
